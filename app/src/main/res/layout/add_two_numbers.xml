@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText_firstNumber"
+        android:hint="First Number"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="113dp" />
+
+    <TextView
+        android:text="Add Two Numbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/textView"
+        android:textSize="18sp"
+        android:layout_above="@+id/editText_secondNumber"
+        android:layout_alignRight="@+id/editText_firstNumber"
+        android:layout_alignEnd="@+id/editText_firstNumber"
+        android:layout_marginRight="36dp"
+        android:layout_marginEnd="36dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="28dp"
+        android:id="@+id/editText_secondNumber"
+        android:hint="Second Number"
+        android:layout_below="@+id/editText_firstNumber"
+        android:layout_alignLeft="@+id/editText_firstNumber"
+        android:layout_alignStart="@+id/editText_firstNumber" />
+
+    <TextView
+        android:text="Result :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtView_Result"
+        android:textSize="36sp"
+        android:layout_below="@+id/editText_secondNumber"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="66dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="30dp" />
+
+    <Button
+        android:text="Okay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_okay"
+        android:onClick="onButtonClick"
+        android:layout_below="@+id/txtView_ResultPrint"
+        android:layout_toLeftOf="@+id/txtView_ResultPrint"
+        android:layout_toStartOf="@+id/txtView_ResultPrint"
+        android:layout_marginTop="38dp" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:id="@+id/txtView_ResultPrint"
+        android:textSize="36sp"
+        android:layout_alignTop="@+id/txtView_Result"
+        android:layout_toRightOf="@+id/txtView_Result"
+        android:layout_toEndOf="@+id/txtView_Result"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp" />
+
+</RelativeLayout>

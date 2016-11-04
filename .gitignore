@@ -38,3 +38,11 @@ captures/
 
 # Keystore files
 *.jks
+
+.idea/libraries/constraint_layout_1_0_0_beta3.xml
+.idea/libraries/constraint_layout_solver_1_0_0_beta3.xml
+.idea/vcs.xml
+app/libs/
+
+/app/app.iml
+/build/
