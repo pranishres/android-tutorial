@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0_dfd167275883b2e46856b91133278cd6b9cce8a4.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.0_a00901d043502f67e23b1db3d9b4c4a8869f8f11/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0_f51839f3beff63ddf27c709e839e7fd01de6ce2b.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_f51839f3beff63ddf27c709e839e7fd01de6ce2b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5576817fd123bf13318700035a1470280678bac8">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_51782077a47e3af0da6620acb72e2a7b8f151ad2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_dfd167275883b2e46856b91133278cd6b9cce8a4/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.0.0_a00901d043502f67e23b1db3d9b4c4a8869f8f11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0_6561a6b2d42001614ae61290476f68a545d84cd9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/pranishres/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.0/support-annotations-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/support-annotations-25.0.0_4165120f69235181baf4ce7e337f5f47efa6b5d5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.0.0_8168572f82cbc7ff64701fa7c4f95dda72969f16.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.0_8168572f82cbc7ff64701fa7c4f95dda72969f16/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.0.0_38993b6483c6dc92c0939a0d42c1b194c57a066a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_1d58bfea755ef69250160b4d7f73333e3c1f2246/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.0_7a73abc54b57da52fa9d5fd72e49f84f4b8a1226/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_4118181388e7f9fa95cbd12c38538392590bf3e7/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.0.0_30b4c479868943c8a324d7f6a71781e18423d342.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.0_30b4c479868943c8a324d7f6a71781e18423d342/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.0.0_7a73abc54b57da52fa9d5fd72e49f84f4b8a1226.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0_4118181388e7f9fa95cbd12c38538392590bf3e7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.0_1d58bfea755ef69250160b4d7f73333e3c1f2246.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.0.0_bf821c90f556641838a74aeeca4c279d1af8fa8a.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="00443b48dc0360caf25d36b09adc3783bf0acea9">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3f82261540451cf10808f8b5348c26ded10e8618/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.0.0_b3622176a6d9857b1152d46a5b43db7e3904d140.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.0.0_b3622176a6d9857b1152d46a5b43db7e3904d140/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.0.0_38993b6483c6dc92c0939a0d42c1b194c57a066a.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.0_bf821c90f556641838a74aeeca4c279d1af8fa8a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pranishres/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.0/support-annotations-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.0_4165120f69235181baf4ce7e337f5f47efa6b5d5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_6561a6b2d42001614ae61290476f68a545d84cd9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.0_6444926899c53327dbc8cc5a690b3e137bd3df84/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.0.0_c3595b245ff481e3e20dc858153c65bdc735ab7a/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.0.0_c3595b245ff481e3e20dc858153c65bdc735ab7a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/media/pranishres/510712721F638E31/Projects/personal/android/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.0.0_6444926899c53327dbc8cc5a690b3e137bd3df84.jar" />
+    </item>
+
+</items>
