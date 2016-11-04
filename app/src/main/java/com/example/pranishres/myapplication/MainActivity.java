@@ -12,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // sets the layout for the activity
-        System.out.println("onCreate()");
 
         // Printing Logs
         Log.i(MY_TAG, "onCreate()");
