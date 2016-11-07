@@ -11,8 +11,15 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <!-- category type "LAUNCHER" means this is the main activity that will be launched when the applicaiton gets executed-->
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SecondActivity">
+            <intent-filter>
+                <action android:name=".SecondActivity" />
+                <!-- category type "DEFAULT" means this is some activity which will be launched by some other activity  -->
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

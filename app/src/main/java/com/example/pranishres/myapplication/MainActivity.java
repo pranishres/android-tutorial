@@ -2,6 +2,7 @@ package com.example.pranishres.myapplication;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -73,9 +74,17 @@ public class MainActivity extends AppCompatActivity {
         addListernerForRating();
         addListenerForRatingButtonClick();
 */
+
+/*
         // Alert dialog
         setContentView(R.layout.alert_dialog);
         addListenerForAlertDialog();
+*/
+        // Start new activity
+        setContentView(R.layout.activity_first);
+        launchNewActivity();
+
+//        setContentView(R.layout.test);
 
         // Printing Logs
         Log.i(MY_TAG, "onCreate()");
@@ -295,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                                        // terminates the applciation
+                                        // exit the applciation. Doesn't terminate though. Runs the application in background.
                                         finish();
                                     }
                                 })
@@ -315,4 +324,23 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
     }
+
+    /**
+     * Layout name :- activity_first
+     * Method name :- Call
+     * Purpose     :- Start new activity on button click event
+     */
+    public void launchNewActivity(){
+        Button buttonCall = (Button) findViewById(R.id.button_FirstActivity);
+        buttonCall.setOnClickListener(
+                new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view){
+                        Intent intent = new Intent(".SecondActivity");
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
+
 }
