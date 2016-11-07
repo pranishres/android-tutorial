@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
     // login
     int attempt_counter = 5;
+
+    // imageview example
+    int current_image_index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +102,13 @@ public class MainActivity extends AppCompatActivity {
         toggleClock();
 */
 
-        // User login 
+/*
+        // User login
         setContentView(R.layout.activity_login);
+*/
+
+        // Using image view example and toggle between multiple images
+        setContentView(R.layout.image_view);
 
         // Printing Logs
         Log.i(MY_TAG, "onCreate()");
@@ -392,7 +401,6 @@ public class MainActivity extends AppCompatActivity {
     public void checkLogin(View view){
         EditText username = (EditText) findViewById(R.id.editText_loginUsername);
         EditText password = (EditText) findViewById(R.id.editText_loginPassword);
-        Button buttonSubmit = (Button) findViewById(R.id.button_loginSubmit);
         TextView attempts = (TextView) findViewById(R.id.textView_loginAttemptsResult);
 
         // checking username and passwor combination
@@ -410,5 +418,18 @@ public class MainActivity extends AppCompatActivity {
                     buttonSubmit.setEnabled(false);
                 }
         }
+    }
+
+    /**
+     * Layout name :- image_view
+     * Method name :- Button Click
+     * Purpose     :- Toggle images
+     */
+    public void toggleImages(View view){
+        ImageView imageview = (ImageView) findViewById(R.id.imageView_toggleImage);
+        int[] images = {R.mipmap.ic_launcher , R.mipmap.ic_launcher1 , R.mipmap.ic_launcher2};
+        current_image_index ++ ;
+        current_image_index = current_image_index % images.length;
+        imageview.setImageResource(images[current_image_index]);
     }
 }
