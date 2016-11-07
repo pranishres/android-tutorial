@@ -9,10 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,9 +82,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.alert_dialog);
         addListenerForAlertDialog();
 */
+
+/*
         // Start new activity
         setContentView(R.layout.activity_first);
         launchNewActivity();
+*/
+
+        setContentView(R.layout.analog_and_digital_clock);
+        toggleClock();
 
 //        setContentView(R.layout.test);
 
@@ -343,4 +351,29 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
+    /**
+     * Layout name :- analog_and_digital_clock
+     * Method name :- Call
+     * Purpose     :- Toggle between chronometer clock and text clock
+     */
+     public void toggleClock(){
+         Button buttonAnaDigi = (Button) findViewById(R.id.button_anaDigi);
+         final TextClock textClock = (TextClock) findViewById(R.id.textClock);
+         final Chronometer chronometer = (Chronometer) findViewById(R.id.chronometer);
+
+         buttonAnaDigi.setOnClickListener(
+                 new View.OnClickListener(){
+                     @Override
+                     public void onClick(View view){
+                         if(textClock.getVisibility() == TextClock.GONE){
+                             textClock.setVisibility(TextClock.VISIBLE);
+                             chronometer.setVisibility(Chronometer.GONE);
+                         }else {
+                             chronometer.setVisibility(Chronometer.VISIBLE);
+                             textClock.setVisibility(TextClock.GONE);
+                         }
+                     }
+                 }
+         );
+     }
 }
