@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     private static Button buttonSubmit;
     private static RadioButton radioButton;
 
+    // login
+    int attempt_counter = 5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,15 +87,19 @@ public class MainActivity extends AppCompatActivity {
 */
 
 /*
-        // Start new activity
+        // Start new activity using intent
         setContentView(R.layout.activity_first);
         launchNewActivity();
 */
 
+/*
+        // Digital and Chronometer clock
         setContentView(R.layout.analog_and_digital_clock);
         toggleClock();
+*/
 
-//        setContentView(R.layout.test);
+        // User login 
+        setContentView(R.layout.activity_login);
 
         // Printing Logs
         Log.i(MY_TAG, "onCreate()");
@@ -376,4 +383,32 @@ public class MainActivity extends AppCompatActivity {
                  }
          );
      }
+
+    /**
+     * Layout name :- activity_login
+     * Method name :- Button Click
+     * Purpose     :- Catch button click event
+     */
+    public void checkLogin(View view){
+        EditText username = (EditText) findViewById(R.id.editText_loginUsername);
+        EditText password = (EditText) findViewById(R.id.editText_loginPassword);
+        Button buttonSubmit = (Button) findViewById(R.id.button_loginSubmit);
+        TextView attempts = (TextView) findViewById(R.id.textView_loginAttemptsResult);
+
+        // checking username and passwor combination
+        if(username.getText().toString().equals("pranish") && password.getText().toString().equals("pranish")){
+            Toast.makeText(MainActivity.this , "Login Successfull" , Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(".User");
+            startActivity(intent);
+        }else {
+                Toast.makeText(MainActivity.this , "Invalid username or password" , Toast.LENGTH_SHORT).show();
+                attempt_counter -- ;
+                attempts.setText(String.valueOf(attempt_counter));
+
+                // checking if the remaining attempts is 0 and disabling the login button
+                if(attempt_counter == 0){
+                    buttonSubmit.setEnabled(false);
+                }
+        }
+    }
 }

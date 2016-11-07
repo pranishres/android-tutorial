@@ -11,14 +11,28 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <!-- category type "LAUNCHER" means this is the main activity that will be launched when the applicaiton gets executed-->
+                <!-- category type "LAUNCHER" means this is the main activity that will be launched when the applicaiton gets executed -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity android:name=".SecondActivity">
             <intent-filter>
+                <!-- package path to the activity.java file. Can be taken from "tools:context" element from activity xml file-->
                 <action android:name=".SecondActivity" />
-                <!-- category type "DEFAULT" means this is some activity which will be launched by some other activity  -->
+                <!-- category type "DEFAULT" means this is some activity which will be launched by some other activity -->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- Activity for login screen -->
+        <activity android:name=".User">
+            <intent-filter>
+                <!-- package path to the activity.java file. Can be taken from "tools:context" element from activity xml file-->
+                <action android:name=".User" />
+                <!-- category type "DEFAULT" means this is some activity which will be launched by some other activity -->
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
