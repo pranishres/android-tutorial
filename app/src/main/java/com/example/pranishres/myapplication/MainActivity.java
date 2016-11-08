@@ -4,8 +4,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.GestureDetectorCompat;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -19,12 +23,21 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+// for gestures
+
 /**
  * The application will load onCreate() method first when it gets executed. There are lots of
  * examples used here. All the examples use different activity layout so you will have to
  * uncomment the particular method in the onCrete() method to run the desired activity
  */
-public class MainActivity extends AppCompatActivity {
+
+
+//Uncomment this when not using gestures examples
+// public class MainActivity extends AppCompatActivity {
+
+// For gesture (touch gestures). Comment this and uncomment the above line of code when not running gestures example
+public class MainActivity extends ActionBarActivity implements
+        GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 
     String MY_TAG = "custom message";
 
@@ -42,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
     // imageview example
     int current_image_index;
+
+    // gestures example
+    private TextView gestureTextView;
+    private GestureDetectorCompat gestureDetectorCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +124,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 */
 
+/*
         // Using image view example and toggle between multiple images
         setContentView(R.layout.image_view);
+*/
+
+        // Gestures (touch gestures)
+        setContentView(R.layout.gestures);
+        gestureTextView = (TextView) findViewById(R.id.textView_gesture);
+        gestureDetectorCompat = new GestureDetectorCompat(this,this);
+        gestureDetectorCompat.setOnDoubleTapListener(this);
 
         // Printing Logs
         Log.i(MY_TAG, "onCreate()");
@@ -242,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 //        private final RadioButton = radioMale, radioFemale, radioOther ;
-        buttonSubmit = (RadioButton) findViewById(R.id.button_RadioSubmit);
+        buttonSubmit = (Button) findViewById(R.id.button_RadioSubmit);
 
         // Add button click event
         buttonSubmit.setOnClickListener(
@@ -354,12 +379,12 @@ public class MainActivity extends AppCompatActivity {
      * Method name :- Call
      * Purpose     :- Start new activity on button click event
      */
-    public void launchNewActivity(){
+    public void launchNewActivity() {
         Button buttonCall = (Button) findViewById(R.id.button_FirstActivity);
         buttonCall.setOnClickListener(
-                new View.OnClickListener(){
+                new View.OnClickListener() {
                     @Override
-                    public void onClick(View view){
+                    public void onClick(View view) {
                         Intent intent = new Intent(".SecondActivity");
                         startActivity(intent);
                     }
@@ -372,51 +397,51 @@ public class MainActivity extends AppCompatActivity {
      * Method name :- Call
      * Purpose     :- Toggle between chronometer clock and text clock
      */
-     public void toggleClock(){
-         Button buttonAnaDigi = (Button) findViewById(R.id.button_anaDigi);
-         final TextClock textClock = (TextClock) findViewById(R.id.textClock);
-         final Chronometer chronometer = (Chronometer) findViewById(R.id.chronometer);
+    public void toggleClock() {
+        Button buttonAnaDigi = (Button) findViewById(R.id.button_anaDigi);
+        final TextClock textClock = (TextClock) findViewById(R.id.textClock);
+        final Chronometer chronometer = (Chronometer) findViewById(R.id.chronometer);
 
-         buttonAnaDigi.setOnClickListener(
-                 new View.OnClickListener(){
-                     @Override
-                     public void onClick(View view){
-                         if(textClock.getVisibility() == TextClock.GONE){
-                             textClock.setVisibility(TextClock.VISIBLE);
-                             chronometer.setVisibility(Chronometer.GONE);
-                         }else {
-                             chronometer.setVisibility(Chronometer.VISIBLE);
-                             textClock.setVisibility(TextClock.GONE);
-                         }
-                     }
-                 }
-         );
-     }
+        buttonAnaDigi.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (textClock.getVisibility() == TextClock.GONE) {
+                            textClock.setVisibility(TextClock.VISIBLE);
+                            chronometer.setVisibility(Chronometer.GONE);
+                        } else {
+                            chronometer.setVisibility(Chronometer.VISIBLE);
+                            textClock.setVisibility(TextClock.GONE);
+                        }
+                    }
+                }
+        );
+    }
 
     /**
      * Layout name :- activity_login
      * Method name :- Button Click
      * Purpose     :- Catch button click event
      */
-    public void checkLogin(View view){
+    public void checkLogin(View view) {
         EditText username = (EditText) findViewById(R.id.editText_loginUsername);
         EditText password = (EditText) findViewById(R.id.editText_loginPassword);
         TextView attempts = (TextView) findViewById(R.id.textView_loginAttemptsResult);
 
         // checking username and passwor combination
-        if(username.getText().toString().equals("pranish") && password.getText().toString().equals("pranish")){
-            Toast.makeText(MainActivity.this , "Login Successfull" , Toast.LENGTH_SHORT).show();
+        if (username.getText().toString().equals("pranish") && password.getText().toString().equals("pranish")) {
+            Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(".User");
             startActivity(intent);
-        }else {
-                Toast.makeText(MainActivity.this , "Invalid username or password" , Toast.LENGTH_SHORT).show();
-                attempt_counter -- ;
-                attempts.setText(String.valueOf(attempt_counter));
+        } else {
+            Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+            attempt_counter--;
+            attempts.setText(String.valueOf(attempt_counter));
 
-                // checking if the remaining attempts is 0 and disabling the login button
-                if(attempt_counter == 0){
-                    buttonSubmit.setEnabled(false);
-                }
+            // checking if the remaining attempts is 0 and disabling the login button
+            if (attempt_counter == 0) {
+                buttonSubmit.setEnabled(false);
+            }
         }
     }
 
@@ -425,11 +450,75 @@ public class MainActivity extends AppCompatActivity {
      * Method name :- Button Click
      * Purpose     :- Toggle images
      */
-    public void toggleImages(View view){
+    public void toggleImages(View view) {
         ImageView imageview = (ImageView) findViewById(R.id.imageView_toggleImage);
-        int[] images = {R.mipmap.ic_launcher , R.mipmap.ic_launcher1 , R.mipmap.ic_launcher2};
-        current_image_index ++ ;
+        int[] images = {R.mipmap.ic_launcher, R.mipmap.ic_launcher1, R.mipmap.ic_launcher2};
+        current_image_index++;
         current_image_index = current_image_index % images.length;
         imageview.setImageResource(images[current_image_index]);
     }
+
+    // Implementation for Gestures examples
+
+    @Override
+    public boolean onTouchEvent(MotionEvent motionEvent){
+        gestureDetectorCompat.onTouchEvent(motionEvent);
+        return super.onTouchEvent(motionEvent);
+    }
+
+
+    @Override
+    public boolean onSingleTapConfirmed(MotionEvent motionEvent) {
+        gestureTextView.setText("onSingleTapConfirmed");
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTap(MotionEvent motionEvent) {
+        gestureTextView.setText("onDoubleTap" );
+        return false;
+    }
+
+    @Override
+    public boolean onDoubleTapEvent(MotionEvent motionEvent) {
+        gestureTextView.setText("onDoubleTapEvent" );
+        return false;
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        gestureTextView.setText("onDown" );
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+        gestureTextView.setText("onShowPress" );
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        gestureTextView.setText("onSingleTapUp");
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        gestureTextView.setText("onScroll");
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+        gestureTextView.setText("onLongPress" );
+    }
+
+    @Override
+    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        gestureTextView.setText("onFling");
+        return false;
+    }
+
+    // End of implementation for gestures example
 }
