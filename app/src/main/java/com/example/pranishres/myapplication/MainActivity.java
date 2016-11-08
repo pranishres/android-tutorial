@@ -77,7 +77,7 @@ import layout.FragmentTwo;
 
     // MultiThreading example for REST API
     private TextView textView_asyncTask;
-/*    private ProgressBar progressBar;*/
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,12 +162,16 @@ import layout.FragmentTwo;
 */
 
         /******* Basic Async Example **********/
+
         setContentView(R.layout.async_task);
         textView_asyncTask = (TextView) findViewById(R.id.textView_asyncTask);
         // enables vertical scrolling
         textView_asyncTask.setMovementMethod(new ScrollingMovementMethod());
 
-        
+        progressBar = (ProgressBar) findViewById(R.id.progressBar_asyncTask);
+        // progress bar should be only visible the thread runs
+        progressBar.setVisibility(View.INVISIBLE);
+
         // Printing Logs
         Log.i(MY_TAG, "onCreate()");
     }
@@ -620,6 +624,7 @@ import layout.FragmentTwo;
         // Runs before background tasks gets executed. The background task is doInBackground()
         // Has access to main thread
         protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
             updateDisplay("Pre Execute");
         }
 
@@ -627,9 +632,28 @@ import layout.FragmentTwo;
         // Doesn't have access to main thread
         @Override
         protected String doInBackground(String... strings) {
+            for(int i = 0 ; i < strings.length ; i++){
+
+                // Helps to publish information in the main thread while the background thread is executing.
+                // This method is also like onPreExecute() and onPostExecute() which has access to main thread.
+                // This method will call onProgressUpdate() method which we will override here below
+                publishProgress("Working with : " + strings[i]);
+
+                // implement Thread.sleep method to give a loading... effect
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             return "Task Complete";
         }
 
+        @Override
+        protected void onProgressUpdate(String... values) {
+            updateDisplay(values[0]);
+            progressBar.setVisibility(View.VISIBLE);
+        }
 
         @Override
         /*
@@ -642,6 +666,7 @@ import layout.FragmentTwo;
 
         protected void onPostExecute(String s) {
             updateDisplay(s);
+            progressBar.setVisibility(View.INVISIBLE);
         }
     }
 
