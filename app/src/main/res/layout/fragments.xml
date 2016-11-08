@@ -3,4 +3,32 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:text="Fragment1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_fragment1"
+        android:onClick="changeFragment" />
+
+    <Button
+        android:text="Fragment2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_fragment2"
+        android:onClick="changeFragment" />
+
+
+    <!-- Custom codes to add fragment in the activity.
+         "android:name ="layout.FragmentOne" will add a default fragment
+    -->
+
+    <fragment
+        android:name ="layout.FragmentOne"
+
+        android:id="@+id/fragment_fragmentPlace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        </fragment>
+
 </LinearLayout>

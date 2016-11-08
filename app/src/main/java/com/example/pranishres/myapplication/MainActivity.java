@@ -5,11 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,6 +21,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 // for gestures
+/*
+import android.support.v7.app.ActionBarActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+*/
+
+// for fragments
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+
+import layout.FragmentOne;
+import layout.FragmentTwo;
 
 /**
  * The application will load onCreate() method first when it gets executed. There are lots of
@@ -31,18 +41,18 @@ import android.widget.Toast;
  * uncomment the particular method in the onCrete() method to run the desired activity
  */
 
-
 //Uncomment this when not using gestures examples
-// public class MainActivity extends AppCompatActivity {
+ public class MainActivity extends AppCompatActivity {
 
-// For gesture (touch gestures). Comment this and uncomment the above line of code when not running gestures example
-public class MainActivity extends ActionBarActivity implements
-        GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
+// For gesture (touch gestures). Uncomment this and comment the above line of code when running gestures example
+/*public class MainActivity extends ActionBarActivity implements
+        GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {*/
 
     String MY_TAG = "custom message";
 
     private EditText password;
     private Button button;
+
 
 
     // Radio button example variables
@@ -129,11 +139,15 @@ public class MainActivity extends ActionBarActivity implements
         setContentView(R.layout.image_view);
 */
 
+/*
         // Gestures (touch gestures)
         setContentView(R.layout.gestures);
         gestureTextView = (TextView) findViewById(R.id.textView_gesture);
         gestureDetectorCompat = new GestureDetectorCompat(this,this);
         gestureDetectorCompat.setOnDoubleTapListener(this);
+*/
+
+        setContentView(R.layout.fragments);
 
         // Printing Logs
         Log.i(MY_TAG, "onCreate()");
@@ -458,6 +472,7 @@ public class MainActivity extends ActionBarActivity implements
         imageview.setImageResource(images[current_image_index]);
     }
 
+/*
     // Implementation for Gestures examples
 
     @Override
@@ -521,4 +536,36 @@ public class MainActivity extends ActionBarActivity implements
     }
 
     // End of implementation for gestures example
+    */
+
+
+    // Fragments
+
+    /**
+     * Layout name :- fragments
+     * Method type :- button click event
+     * Purpose     :- show transition between two fragments.
+     *
+     * A basic example on fragment which will show transition between 2 fragments
+     */
+    public void changeFragment(View view){
+
+        Fragment fragment;
+
+        if(view == findViewById(R.id.button_fragment1)){
+            fragment = new FragmentOne();
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_fragmentPlace , fragment);
+            fragmentTransaction.commit();
+        }
+
+        if(view == findViewById(R.id.button_fragment2)){
+            fragment = new FragmentTwo();
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_fragmentPlace , fragment);
+            fragmentTransaction.commit();
+        }
+    }
 }
