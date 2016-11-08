@@ -3,9 +3,11 @@ package com.example.pranishres.myapplication;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
@@ -31,6 +34,8 @@ import android.view.MotionEvent;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+
+import org.w3c.dom.Text;
 
 import layout.FragmentOne;
 import layout.FragmentTwo;
@@ -69,6 +74,10 @@ import layout.FragmentTwo;
     // gestures example
     private TextView gestureTextView;
     private GestureDetectorCompat gestureDetectorCompat;
+
+    // MultiThreading example for REST API
+    private TextView textView_asyncTask;
+/*    private ProgressBar progressBar;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,8 +156,18 @@ import layout.FragmentTwo;
         gestureDetectorCompat.setOnDoubleTapListener(this);
 */
 
+/*
+        // Fragments example
         setContentView(R.layout.fragments);
+*/
 
+        /******* Basic Async Example **********/
+        setContentView(R.layout.async_task);
+        textView_asyncTask = (TextView) findViewById(R.id.textView_asyncTask);
+        // enables vertical scrolling
+        textView_asyncTask.setMovementMethod(new ScrollingMovementMethod());
+
+        
         // Printing Logs
         Log.i(MY_TAG, "onCreate()");
     }
@@ -472,9 +491,9 @@ import layout.FragmentTwo;
         imageview.setImageResource(images[current_image_index]);
     }
 
-/*
-    // Implementation for Gestures examples
 
+    /***************** Implementation for Gestures examples **************/
+/*
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent){
         gestureDetectorCompat.onTouchEvent(motionEvent);
@@ -533,13 +552,13 @@ import layout.FragmentTwo;
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
         gestureTextView.setText("onFling");
         return false;
-    }
+    }*/
 
-    // End of implementation for gestures example
-    */
+    /*************** END OF  implementation for gestures example **********************/
 
 
-    // Fragments
+
+    /***************  Fragments   ********************/
 
     /**
      * Layout name :- fragments
@@ -568,4 +587,76 @@ import layout.FragmentTwo;
             fragmentTransaction.commit();
         }
     }
+
+    /***************  END OF Fragments   ********************/
+
+
+    /*************** AsyncTask example *******************/
+
+    /*
+     Each application has a single foreground thread and all the visual elements (activity) are on
+     the main thread. But that is again only a single thread which means only 1 thing can be
+     happening at a time.
+     When we need to do some tasks that need few seconds like for example a network request, we
+     need to make sure we are not blocking the main thread. If we use the same main thread then it
+     will freeze the user interface for a few second and might give a ANR error or Application Not Responding
+     error.
+
+     So We will need to run threads in the background. But there is another problem. Once we are in
+     the background thread, we cannot access the user interface which is in the main thread.
+
+     Something is required which will help to run tasks in background thread and also access the main thread
+     which will allow user to know what's happening.
+
+     To be able to work in background and to control the foreground, we work with a class called AsyncTask which is
+     unique to the android environment. The AsyncTask is designed to work with short time lasting not more than
+     10 seconds.
+    */
+
+    /*AsyncTask<Method parameters type, parameter type for publishProgress() , Return Type>*/
+    private class MyTask extends AsyncTask<String, String, String>{
+
+        @Override
+        // Runs before background tasks gets executed. The background task is doInBackground()
+        // Has access to main thread
+        protected void onPreExecute() {
+            updateDisplay("Pre Execute");
+        }
+
+        // Runs in the background
+        // Doesn't have access to main thread
+        @Override
+        protected String doInBackground(String... strings) {
+            return "Task Complete";
+        }
+
+
+        @Override
+        /*
+         Runs after background task is completed. The background task is doInBackground().
+         Has access to main thread.
+         Notice that the onPostExecute() method takes String as a parameter which is the return type
+         of doInBackground.
+         doInBackground will return a value which is then directly passed on to onPostExecute()
+         */
+
+        protected void onPostExecute(String s) {
+            updateDisplay(s);
+        }
+    }
+
+    public void doTask(View v){
+        MyTask mytask = new MyTask();
+        mytask.execute("Param1" , "Param2", "Param3");
+    }
+
+    /**
+     * Append value in textview having id textView_asyncTask
+     * @param message Message to be displayed
+     */
+    private void updateDisplay(String message){
+        textView_asyncTask.append(message + "\n");
+    }
+
+    /*************** END OF AsyncTask example *******************/
 }
