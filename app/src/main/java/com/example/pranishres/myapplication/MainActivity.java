@@ -37,6 +37,9 @@ import android.app.FragmentTransaction;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import layout.FragmentOne;
 import layout.FragmentTwo;
 
@@ -78,6 +81,7 @@ import layout.FragmentTwo;
     // MultiThreading example for REST API
     private TextView textView_asyncTask;
     private ProgressBar progressBar;
+    List<MyTask> tasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,6 +175,8 @@ import layout.FragmentTwo;
         progressBar = (ProgressBar) findViewById(R.id.progressBar_asyncTask);
         // progress bar should be only visible the thread runs
         progressBar.setVisibility(View.INVISIBLE);
+
+        tasks = new ArrayList<>();
 
         // Printing Logs
         Log.i(MY_TAG, "onCreate()");
@@ -624,8 +630,15 @@ import layout.FragmentTwo;
         // Runs before background tasks gets executed. The background task is doInBackground()
         // Has access to main thread
         protected void onPreExecute() {
-            progressBar.setVisibility(View.VISIBLE);
+            // For serial AsyncTask
+            // progressBar.setVisibility(View.VISIBLE);
             updateDisplay("Pre Execute");
+
+            if (tasks.size() == 0){
+             progressBar.setVisibility(View.VISIBLE);
+
+            }
+            tasks.add(this);
         }
 
         // Runs in the background
@@ -652,7 +665,9 @@ import layout.FragmentTwo;
         @Override
         protected void onProgressUpdate(String... values) {
             updateDisplay(values[0]);
-            progressBar.setVisibility(View.VISIBLE);
+
+            //For serial AsyncTask
+            // progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -666,13 +681,26 @@ import layout.FragmentTwo;
 
         protected void onPostExecute(String s) {
             updateDisplay(s);
-            progressBar.setVisibility(View.INVISIBLE);
+          //  For serial Async Task
+            // progressBar.setVisibility(View.INVISIBLE);
+
+            tasks.remove(this);
+
+            if (tasks.size() == 0){
+                progressBar.setVisibility(View.INVISIBLE);
+
+            }
         }
     }
 
     public void doTask(View v){
         MyTask mytask = new MyTask();
-        mytask.execute("Param1" , "Param2", "Param3");
+
+        // implements default AsyncTask i.e serial threading
+        // mytask.execute("Param1" , "Param2", "Param3");
+
+        // implements parallel AsyncTasks
+        mytask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "Param1" , "Param2", "Param3");
     }
 
     /**
