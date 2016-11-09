@@ -39,6 +39,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
 import com.example.pranishres.myapplication.model.Flower;
+import com.example.pranishres.myapplication.parsers.FlowerJSONParser;
 import com.example.pranishres.myapplication.parsers.FlowerXMLParser;
 
 import java.util.ArrayList;
@@ -574,10 +575,15 @@ public class MainActivity extends AppCompatActivity {
         // Runs before background tasks gets executed. The background task is doInBackground()
         // Has access to main thread
         protected void onPreExecute() {
-            // For serial AsyncTask
-            // progressBar.setVisibility(View.VISIBLE);
-//            updateDisplay("Pre Execute");
+             /* // For serial AsyncTask
+                   progressBar.setVisibility(View.VISIBLE);
+                     updateDisplay("Pre Execute");
+             */
 
+
+            /*In parallel Async Thread for managing the progress bar effect. If there are multiple
+            * number of button click events, this will check whether any task is remaining or not.
+            */
             if (tasks.size() == 0) {
                 progressBar.setVisibility(View.VISIBLE);
 
@@ -612,7 +618,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             // Provide raw data to parseFeed() method and get the formatted data
             List<Flower> flowerList;
-            flowerList = FlowerXMLParser.parseFeed(result);
+            flowerList = FlowerJSONParser.parseFeed(result);
 
             updateDisplay(flowerList);
             //  For serial Async Task
@@ -628,7 +634,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void doTask(View v) {
         if (isOnline()) {
-            requestData("http://services.hanselandpetal.com/feeds/flowers.xml");
+            requestData("http://services.hanselandpetal.com/feeds/flowers.json");
         } else {
             Toast.makeText(this, "Network is not available", Toast.LENGTH_LONG).show();
         }
@@ -637,6 +643,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void requestData(String uri) {
         MyTask task = new MyTask();
+        // This method will execute the Async task which will run in background.
         task.execute(uri);
     }
 
@@ -647,13 +654,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private void updateDisplay(List<Flower> flowerList) {
         if (flowerList != null) {
-            for(Flower flower : flowerList){
-            textView_asyncTask.append(" Flower name : "+ flower.getName() +"\n");
+            for (Flower flower : flowerList) {
+                textView_asyncTask.append(" Flower name : " + flower.getName() + "\n");
             }
         }
 
     }
-
 
     /**
      * Check internet connectivity
