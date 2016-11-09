@@ -1,8 +1,11 @@
 package com.example.pranishres.myapplication;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
@@ -35,7 +38,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
-import org.w3c.dom.Text;
+import com.example.pranishres.myapplication.model.Flower;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,18 +52,12 @@ import layout.FragmentTwo;
  * uncomment the particular method in the onCrete() method to run the desired activity
  */
 
-//Uncomment this when not using gestures examples
- public class MainActivity extends AppCompatActivity {
-
-// For gesture (touch gestures). Uncomment this and comment the above line of code when running gestures example
-/*public class MainActivity extends ActionBarActivity implements
-        GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {*/
+public class MainActivity extends AppCompatActivity {
 
     String MY_TAG = "custom message";
 
     private EditText password;
     private Button button;
-
 
 
     // Radio button example variables
@@ -503,69 +500,8 @@ import layout.FragmentTwo;
 
 
     /***************** Implementation for Gestures examples **************/
-/*
-    @Override
-    public boolean onTouchEvent(MotionEvent motionEvent){
-        gestureDetectorCompat.onTouchEvent(motionEvent);
-        return super.onTouchEvent(motionEvent);
-    }
-
-
-    @Override
-    public boolean onSingleTapConfirmed(MotionEvent motionEvent) {
-        gestureTextView.setText("onSingleTapConfirmed");
-        return false;
-    }
-
-    @Override
-    public boolean onDoubleTap(MotionEvent motionEvent) {
-        gestureTextView.setText("onDoubleTap" );
-        return false;
-    }
-
-    @Override
-    public boolean onDoubleTapEvent(MotionEvent motionEvent) {
-        gestureTextView.setText("onDoubleTapEvent" );
-        return false;
-    }
-
-    @Override
-    public boolean onDown(MotionEvent motionEvent) {
-        gestureTextView.setText("onDown" );
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent motionEvent) {
-        gestureTextView.setText("onShowPress" );
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent motionEvent) {
-        gestureTextView.setText("onSingleTapUp");
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        gestureTextView.setText("onScroll");
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent motionEvent) {
-        gestureTextView.setText("onLongPress" );
-    }
-
-    @Override
-    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        gestureTextView.setText("onFling");
-        return false;
-    }*/
-
+    /* CODE HAS BEEN REMOVED. PULL IT FROM THE GIT COMMIT LOG */
     /*************** END OF  implementation for gestures example **********************/
-
 
 
     /***************  Fragments   ********************/
@@ -574,26 +510,26 @@ import layout.FragmentTwo;
      * Layout name :- fragments
      * Method type :- button click event
      * Purpose     :- show transition between two fragments.
-     *
+     * <p>
      * A basic example on fragment which will show transition between 2 fragments
      */
-    public void changeFragment(View view){
+    public void changeFragment(View view) {
 
         Fragment fragment;
 
-        if(view == findViewById(R.id.button_fragment1)){
+        if (view == findViewById(R.id.button_fragment1)) {
             fragment = new FragmentOne();
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_fragmentPlace , fragment);
+            fragmentTransaction.replace(R.id.fragment_fragmentPlace, fragment);
             fragmentTransaction.commit();
         }
 
-        if(view == findViewById(R.id.button_fragment2)){
+        if (view == findViewById(R.id.button_fragment2)) {
             fragment = new FragmentTwo();
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_fragmentPlace , fragment);
+            fragmentTransaction.replace(R.id.fragment_fragmentPlace, fragment);
             fragmentTransaction.commit();
         }
     }
@@ -601,30 +537,37 @@ import layout.FragmentTwo;
     /***************  END OF Fragments   ********************/
 
 
-    /*************** AsyncTask example *******************/
+    /*************** AsyncTask example   *******************/
 
-    /*
-     Each application has a single foreground thread and all the visual elements (activity) are on
-     the main thread. But that is again only a single thread which means only 1 thing can be
-     happening at a time.
-     When we need to do some tasks that need few seconds like for example a network request, we
-     need to make sure we are not blocking the main thread. If we use the same main thread then it
-     will freeze the user interface for a few second and might give a ANR error or Application Not Responding
-     error.
+    /**
+     * Codes in this section are modified time to time. You will need to go to the appropriate state
+     * to download the code. See the list of commits in the readme file or commit history and use
+     * git checkout <Commit_Number>
+     * command to go the required version of the code
+     */
 
-     So We will need to run threads in the background. But there is another problem. Once we are in
-     the background thread, we cannot access the user interface which is in the main thread.
-
-     Something is required which will help to run tasks in background thread and also access the main thread
-     which will allow user to know what's happening.
-
-     To be able to work in background and to control the foreground, we work with a class called AsyncTask which is
-     unique to the android environment. The AsyncTask is designed to work with short time lasting not more than
-     10 seconds.
-    */
+    /**
+     * Each application has a single foreground thread and all the visual elements (activity) are on
+     * the main thread. But that is again only a single thread which means only 1 thing can be
+     * happening at a time.
+     * When we need to do some tasks that need few seconds like for example a network request, we
+     * need to make sure we are not blocking the main thread. If we use the same main thread then it
+     * will freeze the user interface for a few second and might give a ANR error or Application Not Responding
+     * error.
+     * <p>
+     * So We will need to run threads in the background. But there is another problem. Once we are in
+     * the background thread, we cannot access the user interface which is in the main thread.
+     * <p>
+     * Something is required which will help to run tasks in background thread and also access the main thread
+     * which will allow user to know what's happening.
+     * <p>
+     * To be able to work in background and to control the foreground, we work with a class called AsyncTask which is
+     * unique to the android environment. The AsyncTask is designed to work with short time lasting not more than
+     * 10 seconds.
+     */
 
     /*AsyncTask<Method parameters type, parameter type for publishProgress() , Return Type>*/
-    private class MyTask extends AsyncTask<String, String, String>{
+    private class MyTask extends AsyncTask<String, String, String> {
 
         @Override
         // Runs before background tasks gets executed. The background task is doInBackground()
@@ -634,8 +577,8 @@ import layout.FragmentTwo;
             // progressBar.setVisibility(View.VISIBLE);
             updateDisplay("Pre Execute");
 
-            if (tasks.size() == 0){
-             progressBar.setVisibility(View.VISIBLE);
+            if (tasks.size() == 0) {
+                progressBar.setVisibility(View.VISIBLE);
 
             }
             tasks.add(this);
@@ -644,22 +587,9 @@ import layout.FragmentTwo;
         // Runs in the background
         // Doesn't have access to main thread
         @Override
-        protected String doInBackground(String... strings) {
-            for(int i = 0 ; i < strings.length ; i++){
-
-                // Helps to publish information in the main thread while the background thread is executing.
-                // This method is also like onPreExecute() and onPostExecute() which has access to main thread.
-                // This method will call onProgressUpdate() method which we will override here below
-                publishProgress("Working with : " + strings[i]);
-
-                // implement Thread.sleep method to give a loading... effect
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            return "Task Complete";
+        protected String doInBackground(String... params) {
+            String content = HttpManager.getData(params[0]);
+            return content;
         }
 
         @Override
@@ -671,7 +601,7 @@ import layout.FragmentTwo;
         }
 
         @Override
-        /*
+        /**
          Runs after background task is completed. The background task is doInBackground().
          Has access to main thread.
          Notice that the onPostExecute() method takes String as a parameter which is the return type
@@ -679,37 +609,60 @@ import layout.FragmentTwo;
          doInBackground will return a value which is then directly passed on to onPostExecute()
          */
 
-        protected void onPostExecute(String s) {
-            updateDisplay(s);
-          //  For serial Async Task
+        protected void onPostExecute(String result) {
+            updateDisplay(result);
+            //  For serial Async Task
             // progressBar.setVisibility(View.INVISIBLE);
 
             tasks.remove(this);
-
-            if (tasks.size() == 0){
+            if (tasks.size() == 0) {
                 progressBar.setVisibility(View.INVISIBLE);
 
             }
         }
     }
 
-    public void doTask(View v){
-        MyTask mytask = new MyTask();
+    public void doTask(View v) {
+        if (isOnline()) {
+                requestData("http://services.hanselandpetal.com/feeds/flowers.xml");
+        } else{
+            Toast.makeText(this, "Network is not available", Toast.LENGTH_LONG).show();
+        }
 
-        // implements default AsyncTask i.e serial threading
-        // mytask.execute("Param1" , "Param2", "Param3");
+    }
 
-        // implements parallel AsyncTasks
-        mytask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, "Param1" , "Param2", "Param3");
+    private void requestData(String uri) {
+        MyTask task = new MyTask();
+        task.execute(uri);
     }
 
     /**
      * Append value in textview having id textView_asyncTask
+     *
      * @param message Message to be displayed
      */
-    private void updateDisplay(String message){
+    private void updateDisplay(String message) {
         textView_asyncTask.append(message + "\n");
     }
 
+
+    /**
+     * Check internet connectivity
+     */
+    public Boolean isOnline() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        /*Check if connectivity manager is available and  internet connectivity is available or the deivce is trying to connect to the internet*/
+        if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     /*************** END OF AsyncTask example *******************/
+
+
 }

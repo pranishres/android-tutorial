@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView_asyncTask"
@@ -15,7 +15,7 @@
         android:layout_marginTop="118dp" />
 
     <Button
-        android:text="Do Task"
+        android:text="@string/do_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
