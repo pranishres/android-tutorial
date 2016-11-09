@@ -595,7 +595,7 @@ public class MainActivity extends AppCompatActivity {
         // Doesn't have access to main thread
         @Override
         protected String doInBackground(String... params) {
-            String content = HttpManager.getData(params[0]);
+            String content = HttpManager.getData(params[0],"feeduser" , "feedpassword");
             return content;
         }
 
@@ -634,7 +634,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void doTask(View v) {
         if (isOnline()) {
-            requestData("http://services.hanselandpetal.com/feeds/flowers.json");
+            requestData("http://services.hanselandpetal.com/secure/flowers.json");
         } else {
             Toast.makeText(this, "Network is not available", Toast.LENGTH_LONG).show();
         }
@@ -649,9 +649,9 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Append value in textview having id textView_asyncTask
-     *
-     * @param message Message to be displayed
+     * @param flowerList Parsed data
      */
+
     private void updateDisplay(List<Flower> flowerList) {
         if (flowerList != null) {
             for (Flower flower : flowerList) {
