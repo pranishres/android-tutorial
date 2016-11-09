@@ -39,6 +39,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 
 import com.example.pranishres.myapplication.model.Flower;
+import com.example.pranishres.myapplication.parsers.FlowerXMLParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -575,7 +576,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             // For serial AsyncTask
             // progressBar.setVisibility(View.VISIBLE);
-            updateDisplay("Pre Execute");
+//            updateDisplay("Pre Execute");
 
             if (tasks.size() == 0) {
                 progressBar.setVisibility(View.VISIBLE);
@@ -594,23 +595,26 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onProgressUpdate(String... values) {
-            updateDisplay(values[0]);
+//            updateDisplay(values[0]);
 
             //For serial AsyncTask
             // progressBar.setVisibility(View.VISIBLE);
         }
 
-        @Override
         /**
-         Runs after background task is completed. The background task is doInBackground().
-         Has access to main thread.
-         Notice that the onPostExecute() method takes String as a parameter which is the return type
-         of doInBackground.
-         doInBackground will return a value which is then directly passed on to onPostExecute()
+         * Runs after background task is completed. The background task is doInBackground().
+         * Has access to main thread.
+         * Notice that the onPostExecute() method takes String as a parameter which is the return type
+         * of doInBackground.
+         * doInBackground will return a value which is then directly passed on to onPostExecute()
          */
-
+        @Override
         protected void onPostExecute(String result) {
-            updateDisplay(result);
+            // Provide raw data to parseFeed() method and get the formatted data
+            List<Flower> flowerList;
+            flowerList = FlowerXMLParser.parseFeed(result);
+
+            updateDisplay(flowerList);
             //  For serial Async Task
             // progressBar.setVisibility(View.INVISIBLE);
 
@@ -624,8 +628,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void doTask(View v) {
         if (isOnline()) {
-                requestData("http://services.hanselandpetal.com/feeds/flowers.xml");
-        } else{
+            requestData("http://services.hanselandpetal.com/feeds/flowers.xml");
+        } else {
             Toast.makeText(this, "Network is not available", Toast.LENGTH_LONG).show();
         }
 
@@ -641,8 +645,13 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param message Message to be displayed
      */
-    private void updateDisplay(String message) {
-        textView_asyncTask.append(message + "\n");
+    private void updateDisplay(List<Flower> flowerList) {
+        if (flowerList != null) {
+            for(Flower flower : flowerList){
+            textView_asyncTask.append(" Flower name : "+ flower.getName() +"\n");
+            }
+        }
+
     }
 
 
