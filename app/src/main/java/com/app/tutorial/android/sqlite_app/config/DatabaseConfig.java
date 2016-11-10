@@ -36,7 +36,7 @@ public class DatabaseConfig extends SQLiteOpenHelper {
         System.out.println("onCreate()");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + DATABASE_TABLE + "(" + COLN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT , " +
-                COLN_FIRST_NAME + " VARCHAR(30) ," +COLN_LAST_NAME+" varchar(30) ," + COLN_ADDRESS+ " VARCHAR(30) , "+ COLN_EMAIL+ " VARCHAR(30));");
+                COLN_FIRST_NAME + " VARCHAR(30) ," + COLN_LAST_NAME + " varchar(30) ," + COLN_ADDRESS + " VARCHAR(30) , " + COLN_EMAIL + " VARCHAR(30));");
 //        sqLiteDatabase.execSQL("CREATE TABLE student (ID INTEGER PRIMARY KEY , STUDENT VARCHAR(30));");
     }
 
@@ -49,20 +49,21 @@ public class DatabaseConfig extends SQLiteOpenHelper {
 
     /**
      * Insert data
+     *
      * @param student - model object containing data to be inserted
      * @return success (true) / unsuccess (false)
      */
-    public boolean insertData(Student student){
+    public boolean insertData(Student student) {
         Boolean b;
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COLN_FIRST_NAME , student.getFirstName());
-        contentValues.put(COLN_LAST_NAME , student.getLastName());
-        contentValues.put(COLN_ADDRESS , student.getAddress());
-        contentValues.put(COLN_EMAIL , student.getEmail());
+        contentValues.put(COLN_FIRST_NAME, student.getFirstName());
+        contentValues.put(COLN_LAST_NAME, student.getLastName());
+        contentValues.put(COLN_ADDRESS, student.getAddress());
+        contentValues.put(COLN_EMAIL, student.getEmail());
 
-        long result = sqLiteDatabase.insert(DATABASE_TABLE , null , contentValues);
+        long result = sqLiteDatabase.insert(DATABASE_TABLE, null, contentValues);
 
         b = result == -1 ? false : true;
 
@@ -71,11 +72,20 @@ public class DatabaseConfig extends SQLiteOpenHelper {
 
     /**
      * Get all data from the database
+     *
      * @return data
      */
-    public Cursor getAllData(){
+    public Cursor getAllData() {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " +DATABASE_TABLE , null);
+
+        Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + DATABASE_TABLE, null);
         return result;
     }
+
+    public Cursor getById(int id) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM `" + DATABASE_TABLE + "` WHERE id = "+id , null);
+        return result;
+    }
+
 }

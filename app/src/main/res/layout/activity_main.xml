@@ -117,24 +117,49 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="Submit"
+        android:text="View By Id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText_main_email"
-        android:layout_alignLeft="@+id/textView_main_email"
-        android:layout_alignStart="@+id/textView_main_email"
-        android:layout_marginTop="46dp"
-        android:id="@+id/button2"
-        android:onClick="onButtonSubmit" />
+        android:id="@+id/button_main_viewById"
+        android:onClick="getById"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText_main_getById"
+        android:textSize="14sp"
+        android:hint="Student Id"
+        android:layout_alignBaseline="@+id/button_main_viewById"
+        android:layout_alignBottom="@+id/button_main_viewById"
+        android:layout_alignLeft="@+id/btn_main_ViewAll"
+        android:layout_alignStart="@+id/btn_main_ViewAll" />
 
     <Button
         android:text="View All"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_main_ViewAll"
+        android:onClick="getAllData"
         android:layout_alignBaseline="@+id/button2"
         android:layout_alignBottom="@+id/button2"
-        android:layout_alignLeft="@+id/editText_main_email"
-        android:layout_alignStart="@+id/editText_main_email"
-        android:onClick="getAllData" />
+        android:layout_alignRight="@+id/textView_activityMain_Title"
+        android:layout_alignEnd="@+id/textView_activityMain_Title" />
+
+    <Button
+        android:text="Add Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:id="@+id/button2"
+        android:onClick="onButtonSubmit"
+        android:layout_below="@+id/editText_main_email"
+        android:layout_toLeftOf="@+id/editText_main_email"
+        android:layout_toStartOf="@+id/editText_main_email"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp" />
 </RelativeLayout>
