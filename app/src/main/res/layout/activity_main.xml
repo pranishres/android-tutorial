@@ -11,7 +11,130 @@
     tools:context="com.app.tutorial.android.sqlite_app.MainActivity">
 
     <TextView
+        android:text="Student Information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_marginTop="42dp"
+        android:id="@+id/textView_activityMain_Title"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="First Name :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_activityMain_Title"
+        android:layout_alignLeft="@+id/textView_activityMain_Title"
+        android:layout_alignStart="@+id/textView_activityMain_Title"
+        android:layout_marginTop="63dp"
+        android:id="@+id/txtView_main_firstName"
+        android:textSize="14sp" />
+
+    <TextView
+        android:text="Last Name :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:id="@+id/txtView_main_lastName"
+        android:textSize="14sp"
+        android:layout_below="@+id/txtView_main_firstName"
+        android:layout_alignLeft="@+id/txtView_main_firstName"
+        android:layout_alignStart="@+id/txtView_main_firstName" />
+
+    <TextView
+        android:text="Address :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:id="@+id/txtView_main_Address"
+        android:textSize="14sp"
+        android:layout_below="@+id/txtView_main_lastName"
+        android:layout_alignLeft="@+id/txtView_main_lastName"
+        android:layout_alignStart="@+id/txtView_main_lastName" />
+
+    <TextView
+        android:text="Email :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:id="@+id/textView_main_email"
+        android:textSize="14sp"
+        android:layout_below="@+id/txtView_main_Address"
+        android:layout_alignLeft="@+id/txtView_main_Address"
+        android:layout_alignStart="@+id/txtView_main_Address" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText_main_firstName"
+        android:textSize="14sp"
+        android:hint="First Name "
+        android:layout_alignBaseline="@+id/txtView_main_firstName"
+        android:layout_alignBottom="@+id/txtView_main_firstName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText_main_lastName"
+        android:textSize="14sp"
+        android:hint="Last Name"
+        android:layout_alignBaseline="@+id/txtView_main_lastName"
+        android:layout_alignBottom="@+id/txtView_main_lastName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText_main_Address"
+        android:textSize="14sp"
+        android:hint="Address"
+        android:layout_alignBaseline="@+id/txtView_main_Address"
+        android:layout_alignBottom="@+id/txtView_main_Address"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText_main_email"
+        android:textSize="14sp"
+        android:hint="Email"
+        android:layout_alignBaseline="@+id/textView_main_email"
+        android:layout_alignBottom="@+id/textView_main_email"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_main_email"
+        android:layout_alignLeft="@+id/textView_main_email"
+        android:layout_alignStart="@+id/textView_main_email"
+        android:layout_marginTop="46dp"
+        android:id="@+id/button2"
+        android:onClick="onButtonSubmit" />
+
+    <Button
+        android:text="View All"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_main_ViewAll"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignLeft="@+id/editText_main_email"
+        android:layout_alignStart="@+id/editText_main_email"
+        android:onClick="getAllData" />
 </RelativeLayout>

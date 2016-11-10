@@ -4,13 +4,24 @@ import android.app.AlertDialog;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.app.tutorial.android.sqlite_app.config.DatabaseConfig;
 import com.app.tutorial.android.sqlite_app.model.Student;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
     DatabaseConfig dbConfig;
+
+    // Alternative to findViewById. Needs Butterknife dependencies
+    @BindView(R.id.editText_main_firstName) EditText firstName;
+    @BindView(R.id.editText_main_lastName) EditText lastName;
+    @BindView(R.id.editText_main_Address) EditText address;
+    @BindView(R.id.editText_main_email) EditText email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,16 +29,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         dbConfig = new DatabaseConfig(this);
 
-        populateData();
-        getData();
+        // Needs to be called to enable Butterknife annotations
+        ButterKnife.bind(this);
+
     }
 
-    private void populateData(){
+    public void onButtonSubmit(View view){
         Student student  = new Student();
-        student.setFirstName("Pranish");
-        student.setLastName("Shrestha");
-        student.setAddress("Ason");
-        student.setEmail("er@gmail.com");
+        student.setFirstName(firstName.getText().toString());
+        student.setLastName(lastName.getText().toString());
+        student.setAddress(address.getText().toString());
+        student.setEmail(email.getText().toString());
 
         Boolean result = dbConfig.insertData(student);
 
@@ -40,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void getData(){
+    public void getAllData(View view){
         Cursor cursor =  dbConfig.getAllData();
         if(cursor.getCount() == 0){
             showMessage("Error" , "No data found");
