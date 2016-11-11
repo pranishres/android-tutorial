@@ -24,58 +24,113 @@ import butterknife.ButterKnife;
 public class MainActivity extends ActionBarActivity {
     DatabaseConfig dbConfig;
 
-
-
-    /*For adapter view*/
-    String[] allData = new String[]{
-            "Nepal",
-            "China",
-            "Japan",
-            "U.S.A",
-            "U.K",
-            "Spain",
-            "Portugal",
-            "Satungal",
-            "Latungal",
-            "Hatungal",
-            "Patungal",
-            "Matungal",
-            "France",
-            "Dance",
-            "Brance",
-            "aaNepal",
-            "aaChina",
-            "aaJapan",
-            "aaU.S.A",
-            "aaU.K",
-            "aaSpain",
-            "aaPortugal",
-            "aaSatungal",
-            "aaLatungal",
-            "aaHatungal",
-            "aPatungal",
-            "aMatungal",
-            "aFrance",
-            "aDance",
-            "aBrance",
-    };
+    // Alternative to findViewById. Needs Butterknife dependencies
+    @BindView(R.id.editText_main_firstName)
+    EditText firstName;
+    @BindView(R.id.editText_main_lastName)
+    EditText lastName;
+    @BindView(R.id.editText_main_Address)
+    EditText address;
+    @BindView(R.id.editText_main_email)
+    EditText email;
+    @BindView(R.id.editText_main_getById)
+    EditText getById;
 
     List<String> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_list);
+        setContentView(R.layout.activity_main);
         dbConfig = new DatabaseConfig(this);
-
-        ListView lvCountries = (ListView) findViewById(R.id.array_adapter_listView);
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1  , allData);
-        lvCountries.setAdapter(arrayAdapter);
 
         // Needs to be called to enable Butterknife annotations
         ButterKnife.bind(this);
 
     }
 
+    public void onButtonSubmit(View view) {
+        Student student = new Student();
+        student.setFirstName(firstName.getText().toString());
+        student.setLastName(lastName.getText().toString());
+        student.setAddress(address.getText().toString());
+        student.setEmail(email.getText().toString());
+
+        Boolean result = dbConfig.insertData(student);
+
+        if (result) {
+            System.out.println("Data has been inserted successfully");
+            Toast.makeText(MainActivity.this, "Data has been inserted successfully", Toast.LENGTH_SHORT);
+        } else {
+            System.out.println("Error while inserting data");
+            Toast.makeText(MainActivity.this, "Error while inserting data", Toast.LENGTH_SHORT);
+        }
+    }
+
+    /**
+     * Populates all data on a alert dialog
+     * @param view
+     */
+    public void getAllData(View view) {
+        Cursor cursor = dbConfig.getAllData();
+        if (cursor.getCount() == 0) {
+            showMessage("Error", "No data found");
+            return;
+        }
+
+        StringBuffer stringBuffer = new StringBuffer();
+
+        while (cursor.moveToNext()) {
+            stringBuffer.append("Id : " + cursor.getString(0) + "\n");
+            stringBuffer.append("First Name : " + cursor.getString(1) + "\n");
+            stringBuffer.append("Last Name : " + cursor.getString(2) + "\n");
+            stringBuffer.append("Address : " + cursor.getString(3) + "\n");
+            stringBuffer.append("Email : " + cursor.getString(4) + "\n");
+        }
+
+        showMessage("Data", stringBuffer.toString());
+
+    }
+
+    /**
+     * Populates all data in list view in a new activity
+     * @param view
+     */
+    public void getAllData_v2(View view) {
+
+        Cursor cursor = dbConfig.getAllData();
+        if (cursor.getCount() == 0) {
+            showMessage("Error", "No data found");
+            return;
+        }
+        while (cursor.moveToNext()) {
+            list.add(cursor.getString(1));
+        }
+
+        Intent intent = new Intent(".student_list");
+        intent.putStringArrayListExtra("allData" , (ArrayList<String>) list);
+        startActivity(intent);
+
+    }
+
+    public void getById(View view) {
+        Cursor cursor = dbConfig.getById(Integer.parseInt(getById.getText().toString()));
+
+        if (cursor.getCount() == 0) {
+            showMessage("Error", "No data found");
+            return;
+        }
+        while (cursor.moveToNext()) {
+            firstName.setText(cursor.getString(1));
+            lastName.setText(cursor.getString(2));
+        }
+    }
+
+    private void showMessage(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
+    }
 }
