@@ -1,10 +1,14 @@
 package com.app.tutorial.android.sqlite_app.model;
 
+import java.io.Serializable;
+
 /**
  * Created by pranishres on 11/10/16.
+ * We need to extend Serializable while sending Student object data from main activity to
+ * student_list where we show list of student data via parameter. 
  */
 
-public class Student {
+public class Student implements Serializable{
 
     private int id;
     private String firstName;

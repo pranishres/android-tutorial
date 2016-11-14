@@ -1,25 +1,27 @@
 package com.app.tutorial.android.sqlite_app;
 
+import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
+import com.app.tutorial.android.sqlite_app.adapters.StudentAdapter;
+import com.app.tutorial.android.sqlite_app.model.Student;
 
-public class student_list extends AppCompatActivity {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class student_list extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
 
-        ArrayList<String> allData = getIntent().getStringArrayListExtra("allData");
-
-        ListView lvCountries = (ListView) findViewById(R.id.array_adapter_listView);
-
-        ArrayAdapter arrayAdapter = new ArrayAdapter(student_list.this, android.R.layout.simple_list_item_1, allData);
-        lvCountries.setAdapter(arrayAdapter);
-
+        List<Student> students = (List) getIntent().getSerializableExtra("studentData");
+        StudentAdapter studentAdapter = new StudentAdapter(this , R.layout.activity_student_list , students);
+        setListAdapter(studentAdapter);
     }
 }

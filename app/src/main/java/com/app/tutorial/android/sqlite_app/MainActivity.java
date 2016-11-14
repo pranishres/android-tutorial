@@ -1,6 +1,7 @@
 package com.app.tutorial.android.sqlite_app;
 
 import android.app.AlertDialog;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.app.tutorial.android.sqlite_app.adapters.StudentAdapter;
 import com.app.tutorial.android.sqlite_app.config.DatabaseConfig;
 import com.app.tutorial.android.sqlite_app.model.Student;
 
@@ -21,8 +23,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     DatabaseConfig dbConfig;
+
 
     // Alternative to findViewById. Needs Butterknife dependencies
     @BindView(R.id.editText_main_firstName)
@@ -35,8 +38,6 @@ public class MainActivity extends ActionBarActivity {
     EditText email;
     @BindView(R.id.editText_main_getById)
     EditText getById;
-
-    List<String> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +69,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
     /**
-     * Populates all data on a alert dialog
+     * Populates all data on a alert dialog using string buffer
      * @param view
      */
     public void getAllData(View view) {
-        Cursor cursor = dbConfig.getAllData();
+       Cursor cursor = dbConfig.getAllData();
         if (cursor.getCount() == 0) {
             showMessage("Error", "No data found");
             return;
@@ -93,10 +94,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     /**
-     * Populates all data in list view in a new activity
+     * Populates all data in list view in a new activity via Intent
+     * Uses a Custom Adapter
      * @param view
      */
     public void getAllData_v2(View view) {
+        ArrayList<Student> students = new ArrayList<>();
 
         Cursor cursor = dbConfig.getAllData();
         if (cursor.getCount() == 0) {
@@ -104,17 +107,23 @@ public class MainActivity extends ActionBarActivity {
             return;
         }
         while (cursor.moveToNext()) {
-            list.add(cursor.getString(1));
+            Student student = new Student();
+            student.setFirstName(cursor.getString(1));
+            student.setLastName(cursor.getString(2));
+            student.setAddress(cursor.getString(3));
+            student.setEmail(cursor.getString(4));
+
+            students.add(student);
         }
 
-        Intent intent = new Intent(".student_list");
-        intent.putStringArrayListExtra("allData" , (ArrayList<String>) list);
+        Intent intent = new Intent(this , student_list.class);
+        intent.putExtra("studentData", students);
         startActivity(intent);
 
     }
 
     public void getById(View view) {
-        Cursor cursor = dbConfig.getById(Integer.parseInt(getById.getText().toString()));
+       Cursor cursor = dbConfig.getById(Integer.parseInt(getById.getText().toString()));
 
         if (cursor.getCount() == 0) {
             showMessage("Error", "No data found");
